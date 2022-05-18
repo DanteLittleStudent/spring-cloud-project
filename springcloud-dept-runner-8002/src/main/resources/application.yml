@@ -13,6 +13,12 @@ devtools:
 eureka:
   instance:
     hostname: localhost #主机名
+    #将当前实例的ip注册到eureka server中。默认的是false所以注册的是主机名
+    prefer-ip-address: true
+    #设置当前实例的ip
+    ip-address: 127.0.0.1
+    #设置web控制台显示的实例id (当前是 ip:应用名称：端口)
+    instance-id: ${spring.application.name}-${eureka.instance.ip-address}:${server.port}
 
   client:
     #是否将自己的路径注册到eureka上。

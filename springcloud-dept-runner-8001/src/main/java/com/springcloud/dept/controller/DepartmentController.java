@@ -4,12 +4,18 @@ package com.springcloud.dept.controller;
 import com.springcloud.common.bean.ControllerResultInfo;
 import com.springcloud.common.controller.BaseController;
 import com.springcloud.common.dto.DepartmentDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author cuimin
@@ -17,6 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class DepartmentController extends BaseController {
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
 
     @Value("${server.port}")
     private  String port;
