@@ -1,0 +1,24 @@
+server:
+  port: 8101 #服务端口
+
+spring:
+  application:
+    #设置当前应用的名称，将来会在eureka中显示。将来需要该名称来获取路径
+    name: staff-application
+
+devtools:
+  restart:
+    enabled: true
+
+eureka:
+  instance:
+    hostname: localhost #主机名
+
+  client:
+    #是否将自己的路径注册到eureka上。
+    register-with-eureka: true
+    #是否从EurekaServer抓取已有的注册信息，默认为true,单节点无所谓,集群必须设置为true才能配合ribbon使用负载均衡
+    fetch-registry: true
+    service-url:
+      #eureka服务端地址，将来客户端使用该地址和eureka进行通信，默认也是这个值
+      defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka
